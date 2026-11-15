@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #14213d;
+  --color-navy-deep: #0d1629;
+  --color-blue: #284b8f;
+  --color-paper: #f8f9fa;
+  --color-mist: #e9edf2;
+  --color-accent: #e99a35;
+  --color-ink: #1a2336;
+  --color-muted: #5c6578;
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-barlow);
+  --shadow-card: 0 18px 40px -28px rgb(20 33 61 / 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: #284b8f;
+  color: white;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -40px;
+  z-index: 80;
+  background: #14213d;
+  color: white;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.25rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 0.7s ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: fade 0.35s ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header-shell {
+  background: rgb(248 249 250 / 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+}
+
+.header-shell.is-scrolled {
+  background: rgb(248 249 250 / 0.94);
+  border-bottom-color: #e9edf2;
+  box-shadow: 0 8px 30px -22px rgb(20 33 61 / 0.55);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 3rem;
+  padding: 0 1.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #e99a35;
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: #14213d;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #284b8f;
+}
+
+.btn-ghost {
+  border: 1px solid rgb(255 255 255 / 0.35);
+  color: white;
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  background: white;
+  color: #14213d;
+}
+
+.btn-line {
+  border: 1px solid #14213d;
+  color: #14213d;
+  background: transparent;
+}
+
+.btn-line:hover {
+  background: #14213d;
+  color: white;
+}
+
+.product-card img {
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
